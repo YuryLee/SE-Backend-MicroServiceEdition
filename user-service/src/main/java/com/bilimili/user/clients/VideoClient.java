@@ -1,0 +1,29 @@
+package com.bilimili.user.clients;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.bilimili.user.dao.UserVideo;
+import com.bilimili.user.dto.VideoDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+/**
+ * Description:
+ *
+ * @author Yury
+ * @date 2024/8/23 上午12:54
+ */
+@FeignClient(value = "video-service")
+public interface VideoClient {
+    @GetMapping("/video-service/vid/{vid}")
+    @Operation(summary = "服务接口：通过vid获取视频")
+    VideoDTO getVideoWithDataByVid(@PathVariable("vid") Integer vid);
+
+    @GetMapping("/userVideo-service/user/sid")
+    @Operation(summary = "微服务接口：获得sid所有有关视频")
+    List<UserVideo> getUserVideoList(@RequestParam("sid") String sid);
+}

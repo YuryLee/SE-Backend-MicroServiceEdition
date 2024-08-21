@@ -1,0 +1,91 @@
+server:
+  port: 30010
+
+spring:
+  main:
+    web-application-type: reactive
+
+  application:
+    name: gateway
+
+  servlet:
+    multipart.max-file-size: 128MB
+    multipart.max-request-size: 128MB
+
+  main.allow-circular-references: true
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # nacos服务地址
+    gateway:
+      routes:
+        - id: search-service #30011
+          uri: lb://search-service
+          predicates:
+            - Path=/user/search/**, /video/search/**, /zhuanlan/search/**
+        - id: user-service #30012
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**, /user-service/**, /admin/**, /follow/**, follow-service/**, daily/**
+        - id: video-service #30013
+          uri: lb://video-service
+          predicates:
+            - Path=/video/**, /video-service/**, /userVideo-service/**, /favorite/**, /danmu/**, /comment/**
+        - id: msg-service #30014
+          uri: lb://msg-service
+          predicates:
+            - Path=/msg/**
+        - id: post-service #30015
+          uri: lb://posts-service
+          predicates:
+            - Path=/post/**, /post-service/**
+        - id: specol-service #30016
+          uri: lb://specol-service
+          predicates:
+            - Path=/zhuanlan/**, /specol-service/**,
+
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: "*" # spring boot2.4配置
+            # allowed-origins: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+            allowed-methods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+    config:
+      #服务器地址
+      server-addr: localhost:8848
+      # 配置文件格式
+      file-extension: yml
+
+logging:
+  level:
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+ecs:
+  url: 10.193.208.112:30010
+  # ecs.url = 120.46.53.94:8080
+  # ecs.url = 10.193.208.112:8080
+  bucket:
+    path: D:/Bilimili/
+    # path: /usr/local/springboot/micro/
+
+# ecs.bucket.path = D:/Bilimili/
+
+#springdoc:
+#  api-docs:
+#    enabled: true
+#    info:
+#      title: 服务Api文档
+#      description: 文档说明
+#      contact:
+#        name: Myc
+#        email: mycsoft@qq.com
+#        url: http://mycsoft.cn/
