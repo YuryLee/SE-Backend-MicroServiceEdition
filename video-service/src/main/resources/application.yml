@@ -42,7 +42,7 @@ logging:
     dateformat: MM-dd HH:mm:ss:SSS
 
 ecs:
-  url: 10.193.208.112:30010
+  url: 10.193.208.112:30013
   # ecs.url = 120.46.53.94:8080
   # ecs.url = 10.193.208.112:8080
   bucket:

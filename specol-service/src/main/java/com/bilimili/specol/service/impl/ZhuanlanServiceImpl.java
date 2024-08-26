@@ -289,6 +289,7 @@ public class ZhuanlanServiceImpl implements ZhuanlanService {
     public CustomResponse collectVideos(String sid, String vidString) {
         String[] vidStringList = vidString.split(",");
         List<Integer> vidList = new ArrayList<>();
+        System.out.println(Arrays.toString(vidStringList));
         for (String s: vidStringList) {
             vidList.add(Integer.parseInt(s));
         }
@@ -302,7 +303,18 @@ public class ZhuanlanServiceImpl implements ZhuanlanService {
                 VideoDTO video = videoClient.getVideoWithDataByVid(vid);
                 if (userVideo == null) {
                     // 记录不存在，创建新记录
-                    userVideo = new UserVideo(null, sid, vid, 0, 0, 0, 0, 1, null, null, null);
+                    userVideo = new UserVideo(
+                            null,
+                            sid,
+                            vid,
+                            0,
+                            0,
+                            0,
+                            0,
+                            1,
+                            null,
+                            null,
+                            null);
                     videoClient.insertUserVideo(userVideo);
 
                     videoClient.updateStats(vid, "collect", true, 1);

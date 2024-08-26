@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 //@MapperScan({"com.bilimili.demo.mapper"})
 @EnableFeignClients
-@CrossOrigin(origins = "http://10.192.95.26:31001/", allowCredentials = "true")
+@CrossOrigin
 public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);

@@ -22,9 +22,15 @@ public class CommentConverter {
         commentDTO.setVid(comment.getVid());
         commentDTO.setSid(comment.getSid());
         commentDTO.setFromUser(userClient.getUserDTOBySid(comment.getSid()));
+
+        //System.out.println(commentDTO.getFromUser());
+
         commentDTO.setParentId(comment.getParentId());
         commentDTO.setToUserSid(comment.getToUserSid());
         commentDTO.setToUser(userClient.getUserDTOBySid(comment.getToUserSid()));
+
+        //System.out.println(commentDTO.getToUser());
+
         commentDTO.setContent(comment.getContent());
         commentDTO.setCreateTime(comment.getCreateTime());
         return commentDTO;

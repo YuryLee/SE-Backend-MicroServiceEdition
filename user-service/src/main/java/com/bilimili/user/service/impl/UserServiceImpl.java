@@ -9,6 +9,8 @@ import com.bilimili.user.dao.UserRepository;
 import com.bilimili.user.dto.UserDTO;
 import com.bilimili.user.mapper.UserMapper;
 import com.bilimili.user.response.CustomResponse;
+import com.bilimili.user.service.DailyPlayService;
+import com.bilimili.user.service.DailyWatchService;
 import com.bilimili.user.service.UserService;
 import com.bilimili.user.utils.UploadUtils;
 import lombok.RequiredArgsConstructor;
@@ -46,11 +48,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>  implements U
     @Autowired
     UploadUtils uploadUtils;
 
-//    @Autowired
-//    private DailyPlayService dailyPlayService;
-//
-//    @Autowired
-//    private DailyWatchService dailyWatchService;
+    @Autowired
+    private DailyPlayService dailyPlayService;
+
+    @Autowired
+    private DailyWatchService dailyWatchService;
 
     @Override
     public UserDTO getUserBySid(String sid) {
@@ -306,8 +308,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>  implements U
         //esUtil.addUser(new_user);
         customResponse.setMessage("注册成功！欢迎加入Bilimili");
 
-//        dailyPlayService.initData(sid);
-//        dailyWatchService.initData(sid);
+        dailyPlayService.initData(sid);
+        dailyWatchService.initData(sid);
 
         return customResponse;
     }

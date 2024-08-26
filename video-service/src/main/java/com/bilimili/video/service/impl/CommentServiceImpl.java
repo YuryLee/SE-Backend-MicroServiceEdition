@@ -76,6 +76,9 @@ public class CommentServiceImpl implements CommentService {
     public Comment sendComment(Integer vid, String sid, Integer parentId, String toUserSid, String content) {
         if (content == null || content.isEmpty() || content.length() > 2000) return null;
         Date now = new Date();
+        if (parentId == 0) {
+            toUserSid = sid;
+        }
         Comment comment = new Comment(
                 null,
                 vid,

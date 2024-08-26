@@ -20,7 +20,7 @@ public class VideoConverter {
         videoDTO.setVid(video.getVid());
         videoDTO.setUid(video.getUid());
         videoDTO.setSid(video.getSid());
-        //videoDTO.setName(userClient.getUserDTOBySid(video.getSid()).getName());
+        videoDTO.setName(userClient.getUserDTOBySid(video.getSid()).getName());
         videoDTO.setTitle(video.getTitle());
         videoDTO.setType(video.getType());
         videoDTO.setAuth(video.getAuth());

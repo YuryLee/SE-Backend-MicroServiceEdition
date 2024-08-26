@@ -108,8 +108,8 @@ public class VideoReviewImpl implements VideoReview {
                                     18,
                                     1.2,
                                     false,
-                                    "",
-                                    1.1,
+                                    "text",
+                                    10000000.0,
                                     new Date()
                             )
                     );

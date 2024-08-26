@@ -1,13 +1,11 @@
 package com.bilimili.gateway.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-//如果使用网关服务调用微服务，则注释掉Configuration注解；如果不使用网关服务，则需将Configuration注解的注释放开
-// @Configuration
+//@Configuration
 public class CorsConfig {
     // 当前跨域请求最大有效时长。这里默认1天
     private static final long MAX_AGE = 24 * 60 * 60;

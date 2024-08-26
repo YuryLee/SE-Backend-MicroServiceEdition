@@ -206,6 +206,9 @@ public class UserVideoServiceImpl implements UserVideoService {
         QueryWrapper<UserVideo> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sid", sid).eq("vid", vid);
         UserVideo userVideo = userVideoMapper.selectOne(queryWrapper);
+        if (userVideo == null) {
+            return false;
+        }
         return userVideo.getCollect() != 0;
     }
 

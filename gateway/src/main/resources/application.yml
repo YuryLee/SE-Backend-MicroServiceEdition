@@ -37,7 +37,7 @@ spring:
           predicates:
             - Path=/msg/**
         - id: post-service #30015
-          uri: lb://posts-service
+          uri: lb://post-service
           predicates:
             - Path=/post/**, /post-service/**
         - id: specol-service #30016
@@ -45,19 +45,28 @@ spring:
           predicates:
             - Path=/zhuanlan/**, /specol-service/**,
 
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowed-origin-patterns: "*" # spring boot2.4配置
+#            # allowed-origins: "*"
+#            allowed-headers: "*"
+#            allow-credentials: true
+#            allowed-methods:
+#              - GET
+#              - POST
+#              - DELETE
+#              - PUT
+#              - OPTION
       globalcors:
         cors-configurations:
           '[/**]':
-            allowed-origin-patterns: "*" # spring boot2.4配置
-            # allowed-origins: "*"
-            allowed-headers: "*"
-            allow-credentials: true
-            allowed-methods:
-              - GET
-              - POST
-              - DELETE
-              - PUT
-              - OPTION
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      default-filters:
+        - DedupeResponseHeader=Vary Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+
 #    config:
 #      #服务器地址
 #      server-addr: localhost:8848
