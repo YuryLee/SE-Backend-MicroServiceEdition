@@ -195,7 +195,7 @@ public class ZhuanlanController {
         }
     }
 
-    @PostMapping("/zhuanlan/collect/")
+    @PostMapping("/zhuanlan/collect")
     @Operation(summary = "收藏一些vid进sid收藏夹")
     public CustomResponse collectVideo(@RequestParam("sid") String sid, @RequestParam("vid_string") String vidString) {
         CustomResponse customResponse = new CustomResponse();

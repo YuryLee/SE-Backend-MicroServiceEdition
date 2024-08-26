@@ -318,14 +318,14 @@ public class ZhuanlanServiceImpl implements ZhuanlanService {
                     videoClient.insertUserVideo(userVideo);
 
                     videoClient.updateStats(vid, "collect", true, 1);
-                    userClient.updateStats(video.getSid(), "collect_video_count", true, 1);
+                    userClient.updateStats(sid, "collect_video_count", true, 1);
 
                 } else {
                     userVideo.setCollect(1);
                     videoClient.updateUserVideoById(userVideo);
 
                     videoClient.updateStats(vid, "collect", true, 1);
-                    userClient.updateStats(video.getSid(), "collect_video_count", true, 1);
+                    userClient.updateStats(sid, "collect_video_count", true, 1);
                 }
             }
         }
