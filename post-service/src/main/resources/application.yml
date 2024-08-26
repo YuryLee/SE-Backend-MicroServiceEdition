@@ -12,12 +12,13 @@ spring:
      name: post-service
    cloud:
      nacos:
-       server-addr: localhost:8848 # nacos服务地址
-     config:
-       #服务器地址
-       server-addr: localhost:8848
-       # 配置文件格式
-       file-extension: yml
+       # server-addr: localhost:8848 # 本机本地
+       server-addr: 10.193.208.112:8848 # docker中的nacos
+#     config:
+#       #服务器地址
+#       server-addr: localhost:8848
+#       # 配置文件格式
+#       file-extension: yml
 
 mybatis:
   type-aliases-package: com.bilimili.post.dao
